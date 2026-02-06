@@ -1,10 +1,408 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portfolio - Agant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #7b39e6;
+            --secondary: #f4f4f4;
+            --text: #2d2d2d;
+            --border: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--secondary);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(47, 47, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(230, 57, 70, 0.05) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-50px, 50px) rotate(5deg); }
+        }
+
+        .hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .hero .highlight {
+            color: var(--accent);
+            display: inline-block;
+            animation: slideUp 0.8s ease-out 0.2s backwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: var(--text);
+            opacity: 0.9;
+            animation: slideUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 0;
+            transition: all 0.3s;
+            animation: slideUp 0.8s ease-out 0.6s backwards;
+            border: 2px solid var(--accent);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Section commune */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        /* Projets */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        .project-card p {
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--primary);
+        }
+
+        /* Contact */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-   <label for="text">epik</label> 
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Portfolio</a>
+            <ul>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>yo, its me <span class="highlight">Agant</span></h1>
+            <p>Luau dev for +5 years 😁</p>
+            <a href="#projets" class="cta-button">See my projects</a>
+        </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projets">
+        <h2>My projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">01</div>
+                <div class="project-content">
+                    <h3>Gun system</h3>
+                    <p>Gun system made for a comms</p>
+                    <a href="#" class="project-link">check →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">02</div>
+                <div class="project-content">
+                    <h3>Server authority</h3>
+                    <p>Server Authoritative movements system</p>
+                    <a href="#" class="project-link">check →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="contact-content">
+            <h2>Contactez-moi</h2>
+            <p>Je suis toujours intéressé par de nouveaux projets et collaborations. N'hésitez pas à me contacter !</p>
+            <div class="contact-links">
+                <a href="mailto:votre@email.com" class="contact-link">
+                    📧 votre@email.com
+                </a>
+                <a href="https://linkedin.com/in/votreprofil" class="contact-link" target="_blank">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com/votreprofil" class="contact-link" target="_blank">
+                    💻 GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Votre Nom. Tous droits réservés.</p>
+    </footer>
+
+    <!-- 
+    ═══════════════════════════════════════════════════════════════
+    GUIDE D'ÉDITION FACILE - COMMENT PERSONNALISER CE PORTFOLIO
+    ═══════════════════════════════════════════════════════════════
+    
+    1. INFORMATIONS PERSONNELLES (lignes 242-244):
+       - Remplacez "Votre Nom" par votre nom
+       - Modifiez la description sous votre nom
+    
+    2. COULEURS (lignes 11-16):
+       - --accent: changez #e63946 pour votre couleur principale
+       - --primary: couleur du texte principal
+       - --secondary: couleur de fond
+    
+    3. PROJETS (lignes 254-290):
+       - Pour chaque projet, modifiez:
+         * Le titre (balise <h3>)
+         * La description (balise <p>)
+         * Le lien (attribut href)
+       - Pour ajouter un projet: copiez un bloc <div class="project-card">...</div>
+       - Pour l'image: remplacez le numéro ou ajoutez une vraie image:
+         <div class="project-image"><img src="votre-image.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+    
+    4. COMPÉTENCES (lignes 297-327):
+       - Modifiez les listes <ul> dans chaque catégorie
+       - Ajoutez/supprimez des compétences avec <li>Nouvelle compétence</li>
+       - Pour une nouvelle catégorie, copiez un bloc <div class="skill-category">...</div>
+    
+    5. CONTACT (lignes 334-349):
+       - Remplacez "votre@email.com" par votre email
+       - Modifiez les liens LinkedIn et GitHub
+       - Ajoutez d'autres réseaux sociaux en copiant une ligne <a class="contact-link">
+    
+    6. NAVIGATION (lignes 230-238):
+       - Modifiez "Portfolio" par votre nom/marque
+    
+    7. POLICES (ligne 7):
+       - Visitez https://fonts.google.com pour choisir d'autres polices
+       - Remplacez 'Playfair Display' et 'Work Sans' dans le lien et le CSS
+    
+    ASTUCE: Pour tester vos modifications, ouvrez simplement le fichier .html 
+    dans votre navigateur. Les changements apparaîtront immédiatement !
+    -->
 </body>
 </html>
