@@ -7,9 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a1a1a;
+            --primary: #ffffff;
             --accent: #7b39e6;
-            --secondary: #f4f4f4;
+            --secondary: #000000;
             --text: #2d2d2d;
             --border: rgba(0, 0, 0, 0.1);
         }
@@ -32,7 +32,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(47, 47, 47, 0.95);
+            background: rgba(94, 0, 161, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid var(--border);
@@ -78,7 +78,7 @@
             display: flex;
             align-items: center;
             padding: 6rem 2rem 4rem;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+            background: linear-gradient(380deg, #000000 0%, #11001a 100%);
             position: relative;
             overflow: hidden;
         }
@@ -184,7 +184,7 @@
         }
 
         .project-card {
-            background: white;
+            background: rgb(14, 0, 9);
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid var(--border);
@@ -306,16 +306,18 @@
         <div class="container">
             <h1>yo, its me <span class="highlight">Agant</span></h1>
             <p>Luau dev for +5 years 😁</p>
-            <a href="#projets" class="cta-button">See my projects</a>
+            <a href="#projets" class="cta-button">See my work</a>
         </div>
     </section>
 
     <!-- Projets -->
     <section id="projets">
-        <h2>My projects</h2>
+        <h2>My stuffs</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-image">01</div>
+                <div class="project-image">
+                  <img src="https://cdn.discordapp.com/attachments/877571614768791602/1469365518967509169/Capture_decran_2026-02-06_171309.png?ex=698764c7&is=69861347&hm=26292e94340725ba1323e47010221cb6a8055ab8810220489d5d056a10c01ca4&" alt="Projet 1" style="width:100%;height:100%;object-fit:cover;">
+                </div>
                 <div class="project-content">
                     <h3>Gun system</h3>
                     <p>Gun system made for a comms</p>
@@ -324,13 +326,17 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">02</div>
+                <div class="project-image">
+                  <img src="https://cdn.discordapp.com/attachments/877571614768791602/1468938867662000219/image.png?ex=698728ed&is=6985d76d&hm=2ed0fd43bf4d9a8b61e11302309554f413246342f2d00316c14e1adea1d6afd0&" alt="Projet 1" style="width:100%;height:100%;object-fit:cover;">
+                </div>
                 <div class="project-content">
                     <h3>Server authority</h3>
                     <p>Server Authoritative movements system</p>
                     <a href="#" class="project-link">check →</a>
                 </div>
             </div>
+
+            
 
         </div>
     </section>
@@ -340,17 +346,14 @@
     <!-- Contact -->
     <section id="contact">
         <div class="contact-content">
-            <h2>Contactez-moi</h2>
-            <p>Je suis toujours intéressé par de nouveaux projets et collaborations. N'hésitez pas à me contacter !</p>
+            <h2>Links</h2>
+            <p>Interested? contact me there</p>
             <div class="contact-links">
-                <a href="mailto:votre@email.com" class="contact-link">
-                    📧 votre@email.com
-                </a>
-                <a href="https://linkedin.com/in/votreprofil" class="contact-link" target="_blank">
-                    💼 LinkedIn
-                </a>
-                <a href="https://github.com/votreprofil" class="contact-link" target="_blank">
-                    💻 GitHub
+                <span class="contact-link">
+                    <img src="https://cdn.discordapp.com/attachments/877571614768791602/1469371191851614300/ZWUtcG5nLnBuZw.png?ex=69876a0f&is=6986188f&hm=22c362de3b5ab616e113bff1ff7a521f2cdfd00fec3fb824b32ee8aeba9fb4b1&" alt="Discord" style="width:24px;height:24px;vertical-align:middle;"> unagant
+                </span>
+                <a href="https://www.roblox.com/users/717453329/profile" class="contact-link" target="_blank">
+                    💼 Roblox
                 </a>
             </div>
         </div>
